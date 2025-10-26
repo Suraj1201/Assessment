@@ -1,0 +1,27 @@
+﻿
+<table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Product Name
+                    </th>
+                    <th>
+                        Genre
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>
+                            @obj.Name
+                        </td>
+                        <td>
+                            @obj.Genre
+
+                        </td>
+                    </tr>            
+                }
+            </tbody>
+</table>
