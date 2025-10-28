@@ -22,7 +22,7 @@ namespace CyberSpaceGamers.Models.ViewModels
         public int TotalPages { get; set; }
         // Total number of pages for pagination.
 
-        public IEnumerable<ProductCardViewModel> Products { get; set; } = new List<ProductCardViewModel>();
+        public IEnumerable<Product> Products { get; set; } = new List<Product>();
         // The list of products to display on this page.
 
         public IEnumerable<string> Genres { get; set; } = new List<string>();

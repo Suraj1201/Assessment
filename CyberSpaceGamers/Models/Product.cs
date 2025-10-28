@@ -15,7 +15,8 @@ namespace CyberSpaceGamers.Models
         public string Name { get; set; } = string.Empty;
         // Name of the product. Required means it cannot be null in the database.
 
-        public string? ShortDescription { get; set; }
+
+        public string? ShortDescription { get; set; } 
         // Optional short description about the product.
 
         [Range(0, 9999)]

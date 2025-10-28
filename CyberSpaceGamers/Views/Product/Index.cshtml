@@ -1,27 +1,87 @@
-﻿
-<table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        Product Name_test
-                    </th>
-                    <th>
-                        Genre
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var obj in Model)
-                {
-                    <tr>
-                        <td>
-                            @obj.Name
-                        </td>
-                        <td>
-                            @obj.Genre
+﻿@model CyberSpaceGamers.Models.ViewModels.ProductListViewModel
+@{
+    ViewData["Title"] = "Products";
+    ViewData["ActiveNav"] = "Products";
+}
 
-                        </td>
-                    </tr>            
+<section class="container">
+    <div class="row">
+        <!-- Genres -->
+        <aside class="col-12 col-md-3 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header fw-semibold">Genres</div>
+                <div class="list-group list-group-flush">
+                    @foreach (var g in Model.Genres)
+                    {
+                        <a asp-action="Index" asp-route-genre="@g"
+                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center @(Model.Genre == g ? "active" : "")">
+                            @g <i class="bi bi-chevron-right"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-12 col-md-9">
+            <div class="d-flex flex-column flex-md-row gap-2 align-items-stretch align-items-md-center mb-3">
+                <form asp-action="Index" method="get" class="flex-grow-1 d-flex gap-2">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-search" aria-hidden="true"></i>
+                        </span>
+                        <input name="search"
+                               value="@Model.Search"
+                               class="form-control"
+                               placeholder="Search games…"
+                               aria-label="Search games">
+                    </div>
+                    <select name="sort" class="form-select" style="max-width: 180px;" aria-label="Sort results">
+                        <option value="">Sort</option>
+                        <option value="priceAsc" selected="@(Model.Sort == "priceAsc")">Price ↑</option>
+                        <option value="priceDesc" selected="@(Model.Sort == "priceDesc")">Price ↓</option>
+                        <option value="name" selected="@(Model.Sort == "name")">Name</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Apply</button>
+                </form>
+                <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-light">
+                    <i class="bi bi-bag"></i> View Basket
+                </a>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="row g-3">
+                @foreach (var p in Model.Products)
+                {
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        @await Html.PartialAsync("_ProductCard", p)
+                    </div>
                 }
-            </tbody>
-</table>
+            </div>
+            <!-- Pagination navigation section -->
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <span class="page-link d-flex align-items-center gap-1">
+                            ← Previous
+                        </span>
+                    </li>
+
+                    <li class="page-item active">
+                        <span class="page-link">1</span>
+                    </li>
+
+                    <!-- Make Next go to Index2 -->
+                    <li class="page-item">
+                        <a class="page-link d-flex align-items-center gap-1" asp-action="Index2">
+                            Next →
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+
+        </main>
+    </div>
+</section>
