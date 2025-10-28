@@ -20,7 +20,8 @@ namespace CyberSpaceGamers.Migrations
                     { 1, "18+", "Action", "Game One", 10.99m, "Game One Description" },
                     { 2, "12+", "Adventure", "Game Two", 11.99m, "Game Two Description" },
                     { 3, "18+", "RPG", "Game Three", 10.99m, "Game Three Description" },
-                    { 4, "12+", "Indie", "Game Four", 11.99m, "Game Four Description" }
+                    { 4, "12+", "Indie", "Game Four", 11.99m, "Game Four Description" },
+                    { 5, "12+", "Indie", "Game Four", 11.99m, "Game Four Description" }
                 });
         }
 
@@ -46,6 +47,11 @@ namespace CyberSpaceGamers.Migrations
                 table: "Products",
                 keyColumn: "Id",
                 keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "Products",
+                keyColumn: "Id",
+                keyValue: 5);
         }
     }
 }

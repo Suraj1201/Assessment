@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CyberSpaceGamers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251026214331_SeedProductTable")]
+    [Migration("20251028183959_SeedProductTable")]
     partial class SeedProductTable
     {
         /// <inheritdoc />
@@ -45,7 +45,6 @@ namespace CyberSpaceGamers.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ShortDescription")
@@ -86,6 +85,15 @@ namespace CyberSpaceGamers.Migrations
                         new
                         {
                             Id = 4,
+                            AgeRating = "12+",
+                            Genre = "Indie",
+                            Name = "Game Four",
+                            Price = 11.99m,
+                            ShortDescription = "Game Four Description"
+                        },
+                        new
+                        {
+                            Id = 5,
                             AgeRating = "12+",
                             Genre = "Indie",
                             Name = "Game Four",
