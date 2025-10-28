@@ -1,0 +1,19 @@
+﻿@model CyberSpaceGamers.Models.ViewModels.ProductCardViewModel
+
+<div class="card h-100 shadow-sm product-card">
+    
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-1">@Model.Name</h5>
+        <div class="small text-muted mb-2">@Model.ShortDescription</div>
+        <div class="mb-2 fw-semibold">£@Model.Price</div>
+        <
+        <div class="mt-auto d-grid">
+            <form asp-controller="Cart" asp-action="Add" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button class="btn btn-primary w-100" type="submit">
+                    <i class="bi bi-plus-lg"></i> Add to Basket
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
