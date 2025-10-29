@@ -68,5 +68,10 @@ namespace CyberSpaceGamers.Controllers
 
             return View(vm);
         }
+
+        public IActionResult Details()
+        {
+            return View();
+        }
     }
 }
