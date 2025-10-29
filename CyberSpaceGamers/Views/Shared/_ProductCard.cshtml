@@ -6,7 +6,7 @@
         <h5 class="card-title mb-1">@Model.Name</h5>
         <div class="small text-muted mb-2">@Model.ShortDescription</div>
         <div class="mb-2 fw-semibold">£@Model.Price</div>
-        <
+        
         <div class="mt-auto d-grid">
             <form asp-controller="Cart" asp-action="Add" method="post">
                 <input type="hidden" name="id" value="@Model.Id" />

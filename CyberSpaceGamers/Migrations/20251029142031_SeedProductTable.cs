@@ -17,11 +17,11 @@ namespace CyberSpaceGamers.Migrations
                 columns: new[] { "Id", "AgeRating", "Genre", "Name", "Price", "ShortDescription" },
                 values: new object[,]
                 {
-                    { 1, "18+", "Action", "Game One", 10.99m, "Game One Description" },
-                    { 2, "12+", "Adventure", "Game Two", 11.99m, "Game Two Description" },
-                    { 3, "18+", "RPG", "Game Three", 10.99m, "Game Three Description" },
-                    { 4, "12+", "Indie", "Game Four", 11.99m, "Game Four Description" },
-                    { 5, "12+", "Indie", "Game Four", 11.99m, "Game Four Description" }
+                    { 1, "18+", "Action", "Game 1", 10.99m, "Game One Description" },
+                    { 2, "12+", "Adventure", "Game 2", 11.99m, "Game Two Description" },
+                    { 3, "18+", "RPG", "Game 3", 10.99m, "Game Three Description" },
+                    { 4, "12+", "Indie", "Game 4", 11.99m, "Game Four Description" },
+                    { 5, "12+", "Indie", "Game 5", 11.99m, "Game Four Description" }
                 });
         }
 
