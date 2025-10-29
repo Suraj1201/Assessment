@@ -12,10 +12,6 @@ namespace CyberSpaceGamers.Models
 
         public string? PasswordHash { get; set; }
 
-        public string? FName { get; set; }
-
-        public string? LName { get; set; }
-
         public DateOnly? DOB { get; set; }
     }
 }
