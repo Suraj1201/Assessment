@@ -47,7 +47,7 @@ namespace CyberSpaceGamers.Controllers
                 _ => query
             };
 
-            const int pageSize = 6;
+            const int pageSize = 9;
             var totalItems = query.Count();
             var totalPages = Math.Max(1, (int)Math.Ceiling(totalItems / (double)pageSize));
             page = Math.Clamp(page, 1, totalPages);
