@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Create Account";
+    Layout = "_Layout";
+}
+
+<div class="container py-4" style="max-width: 540px;">
+    <h1 class="h3 mb-3">Create Account</h1>
+
+    <form>
+        <div class="mb-3">
+            <label class="form-label" for="reg-username">Username</label>
+            <input id="reg-username" class="form-control" placeholder="Choose a username" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="reg-password">Password</label>
+            <input id="reg-password" type="password" class="form-control" placeholder="Create a password" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="reg-confirm">Confirm Password</label>
+            <input id="reg-confirm" type="password" class="form-control" placeholder="Re-enter password" />
+        </div>
+
+        <button class="btn btn-primary w-100" disabled title="Demo only">Create account</button>
+    </form>
+</div>

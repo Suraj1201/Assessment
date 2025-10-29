@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Product";
+    Layout = "_Layout";
+}
+
+<div class="container py-4">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Product">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Product Name</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+        <!-- Image area -->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="ratio ratio-4x3 d-flex align-items-center justify-content-center text-muted">
+                    Image Placeholder
+                </div>
+            </div>
+        </div>
+
+        <!-- Details area -->
+        <div class="col-md-7">
+            <h1 class="h3 mb-2">Product Name</h1>
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge text-bg-secondary">Genre</span>
+                <span class="badge text-bg-dark">Age Rating</span>
+            </div>
+
+            <div class="h4 mb-3">£00.00</div>
+
+            <p class="text-muted mb-2">
+                Short description goes here. One or two lines that explain the key point.
+            </p>
+            <p>
+                Longer description for the product. This is layout content only (no data binding).
+            </p>
+
+            <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-primary" disabled title="Demo only">Add to Basket</button>
+                <button class="btn btn-outline-secondary" disabled title="Demo only">Add to Wishlist</button>
+            </div>
+
+            <hr class="my-4" />
+
+            <div>
+                <h2 class="h6">Details</h2>
+                <ul class="small text-muted mb-0">
+                    <li>Genre: —</li>
+                    <li>Age Rating: —</li>
+                    <li>Platform: —</li>
+                    <li>Release: —</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

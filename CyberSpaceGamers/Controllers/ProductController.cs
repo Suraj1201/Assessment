@@ -12,16 +12,16 @@ namespace CyberSpaceGamers.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-        
+
         public ProductController(ApplicationDbContext db)
 
-        {  
-            _db = db; 
-        
+        {
+            _db = db;
+
         }
         public IActionResult Index(string? search, string? genre, string? sort, int page = 1)
         {
-            IQueryable<Product> query = _db.Products ;
+            IQueryable<Product> query = _db.Products;
 
             if (!string.IsNullOrWhiteSpace(genre))
                 query = query.Where(p => string.Equals(p.Genre, genre, StringComparison.OrdinalIgnoreCase));
@@ -61,7 +61,5 @@ namespace CyberSpaceGamers.Controllers
 
             return View(vm);
         }
-
-       
     }
 }

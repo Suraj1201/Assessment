@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+
+<div class="container py-4" style="max-width: 540px;">
+    <h1 class="h3 mb-3">Login</h1>
+
+    <form>
+        <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input id="username" class="form-control" placeholder="Enter username" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input id="password" type="password" class="form-control" placeholder="Enter password" />
+        </div>
+
+        <button class="btn btn-primary w-100" disabled title="Demo only">Login</button>
+
+        <p class="text-center mt-3 mb-0">
+            Don’t have an account?
+            <a asp-controller="Account" asp-action="Register">Create new account</a>
+        </p>
+    </form>
+</div>
