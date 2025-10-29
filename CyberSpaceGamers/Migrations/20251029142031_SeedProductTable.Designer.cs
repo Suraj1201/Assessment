@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CyberSpaceGamers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251028183959_SeedProductTable")]
+    [Migration("20251029142031_SeedProductTable")]
     partial class SeedProductTable
     {
         /// <inheritdoc />
@@ -60,7 +60,7 @@ namespace CyberSpaceGamers.Migrations
                             Id = 1,
                             AgeRating = "18+",
                             Genre = "Action",
-                            Name = "Game One",
+                            Name = "Game 1",
                             Price = 10.99m,
                             ShortDescription = "Game One Description"
                         },
@@ -69,7 +69,7 @@ namespace CyberSpaceGamers.Migrations
                             Id = 2,
                             AgeRating = "12+",
                             Genre = "Adventure",
-                            Name = "Game Two",
+                            Name = "Game 2",
                             Price = 11.99m,
                             ShortDescription = "Game Two Description"
                         },
@@ -78,7 +78,7 @@ namespace CyberSpaceGamers.Migrations
                             Id = 3,
                             AgeRating = "18+",
                             Genre = "RPG",
-                            Name = "Game Three",
+                            Name = "Game 3",
                             Price = 10.99m,
                             ShortDescription = "Game Three Description"
                         },
@@ -87,7 +87,7 @@ namespace CyberSpaceGamers.Migrations
                             Id = 4,
                             AgeRating = "12+",
                             Genre = "Indie",
-                            Name = "Game Four",
+                            Name = "Game 4",
                             Price = 11.99m,
                             ShortDescription = "Game Four Description"
                         },
@@ -96,7 +96,7 @@ namespace CyberSpaceGamers.Migrations
                             Id = 5,
                             AgeRating = "12+",
                             Genre = "Indie",
-                            Name = "Game Four",
+                            Name = "Game 5",
                             Price = 11.99m,
                             ShortDescription = "Game Four Description"
                         });

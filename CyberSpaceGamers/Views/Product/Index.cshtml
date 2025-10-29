@@ -37,7 +37,7 @@
                                aria-label="Search games">
                     </div>
                     <select name="sort" class="form-select" style="max-width: 180px;" aria-label="Sort results">
-                        <option value="">Sort</option>
+                        <option>No Filter</option>
                         <option value="priceAsc" selected="@(Model.Sort == "priceAsc")">Price ↑</option>
                         <option value="priceDesc" selected="@(Model.Sort == "priceDesc")">Price ↓</option>
                         <option value="name" selected="@(Model.Sort == "name")">Name</option>
@@ -51,10 +51,22 @@
 
             <!-- Product Grid -->
             <div class="row g-3">
-                @foreach (var p in Model.Products)
+                <!--Check if product list exist-->
+                @if (Model.Products != null && Model.Products.Any())
                 {
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        @await Html.PartialAsync("_ProductCard", p)
+                    <!--Loop Through each product in the collection-->
+                    @foreach (var p in Model.Products)
+                    {
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            @await Html.PartialAsync("_ProductCard", p)
+                        </div>
+                    }
+                }
+                else
+                {
+                    <!--Display a default message when searched product are not found-->
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">No Games Found</p>
                     </div>
                 }
             </div>
