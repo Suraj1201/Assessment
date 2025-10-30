@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CyberSpaceGamers.Models.Product
+@{
     ViewData["Title"] = "Product";
     Layout = "_Layout";
 }
@@ -17,7 +18,7 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="ratio ratio-4x3 d-flex align-items-center justify-content-center text-muted">
-                    Image Placeholder
+                    <img src="~/img/logo.png" alt="Alternate Text" />
                 </div>
             </div>
         </div>
@@ -42,8 +43,7 @@
             </p>
 
             <div class="d-flex gap-2 mt-3">
-                <button class="btn btn-primary" disabled title="Demo only">Add to Basket</button>
-                <button class="btn btn-outline-secondary" disabled title="Demo only">Add to Wishlist</button>
+                <a class="btn btn-primary" asp-controller="Basket" asp-action="Index">Add to Basket</a>
             </div>
 
             <hr class="my-4" />
