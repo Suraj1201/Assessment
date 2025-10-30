@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CyberSpaceGamers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251029181525_SeedProductTable")]
-    partial class SeedProductTable
+    [Migration("20251030111944_seedproducttable")]
+    partial class seedproducttable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

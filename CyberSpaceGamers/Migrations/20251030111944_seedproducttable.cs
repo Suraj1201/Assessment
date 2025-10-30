@@ -7,7 +7,7 @@
 namespace CyberSpaceGamers.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedProductTable : Migration
+    public partial class seedproducttable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -20,3 +20,143 @@ html {
 body {
   margin-bottom: 60px;
 }
+/* === Theme tokens === */
+:root {
+    --navy-900: #06132b;
+    --navy-800: #0b1e3e;
+    --navy-700: #0e2249;
+    --navy-600: #122b5f;
+    --blue-300: #cfe8fb;
+    --text: #e9eefb;
+    --muted: #9fb0c9;
+    --card: #0f2146;
+    --ring: rgba(255,255,255,.08);
+}
+
+.body-dark {
+    background: var(--navy-900);
+    color: var(--text);
+}
+
+.bg-navy {
+    background: var(--navy-800);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #cfe3ff;
+}
+
+    .navbar-dark .navbar-nav .nav-link.active {
+        color: #fff;
+        font-weight: 600;
+    }
+
+.btn-primary {
+    --bs-btn-bg: #2d6cdf;
+    --bs-btn-border-color: #2d6cdf;
+}
+
+.btn-outline-light {
+    border-color: #b9c9ff;
+    color: #e0e8ff;
+}
+
+.btn-warning {
+    --bs-btn-bg: #ffcc28;
+    --bs-btn-border-color: #ffcc28;
+    color: #1b1b1b;
+}
+
+.card-dark {
+    background: var(--card);
+    border: 1px solid var(--ring);
+    color: var(--text);
+}
+
+.list-group-dark .list-group-item {
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--ring);
+}
+
+.badge-dark {
+    background: var(--navy-600);
+    color: #e0e7ff;
+}
+
+/* Hero */
+.hero {
+    background: var(--blue-300);
+    color: #0c1b38;
+    border-radius: 1.25rem;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+    .hero .title {
+        font-weight: 800;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+/* Product card */
+.product-card .cover {
+    background: #0b1f44;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.product-card .price {
+    font-weight: 600;
+    margin: .25rem 0 .5rem;
+}
+
+.product-card .stars {
+    letter-spacing: 2px;
+}
+
+/* Utilities */
+.rounded-3xl {
+    border-radius: 1.25rem;
+}
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px; /* change to 50% if you want a circle */
+    object-fit: contain; /* keeps full logo in frame */
+    display: block;
+}
+.hero-logo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #0c1b38; /* subtle ring behind transparent PNGs */
+}
+/* --- Footer (view-only styling) --- */
+.site-footer {
+    background: var(--blue-300);
+    color: #0c1b38;
+}
+
+.footer-title {
+    font-weight: 700;
+    letter-spacing: .02em;
+    margin-bottom: .75rem;
+}
+
+.footer-link {
+    color: #0c1b38;
+    text-decoration: none;
+}
+
+    .footer-link:hover {
+        text-decoration: underline;
+    }
+
+.newsletter-input {
+    background: #fff;
+}
+
+.footer-divider {
+    border-color: rgba(0,0,0,.12);
+}

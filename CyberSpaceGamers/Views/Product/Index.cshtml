@@ -8,9 +8,9 @@
     <div class="row">
         <!-- Genres -->
         <aside class="col-12 col-md-3 mb-4">
-            <div class="card shadow-sm">
+            <div class="card card-dark shadow-sm rounded-3xl">
                 <div class="card-header fw-semibold">Genres</div>
-                <div class="list-group list-group-flush">
+                <div class="list-group list-group-flush list-group-dark">
                     @foreach (var g in Model.Genres)
                     {
                         <a asp-action="Index" asp-route-genre="@g"
@@ -46,7 +46,7 @@
                     </select>
                     <button class="btn btn-primary" type="submit">Apply</button>
                 </form>
-                <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-light">
+                <a asp-controller="Basket" asp-action="Index" class="btn btn-outline-light">
                     <i class="bi bi-bag"></i> View Basket
                 </a>
             </div>
