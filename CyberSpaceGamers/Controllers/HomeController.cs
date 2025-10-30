@@ -17,7 +17,7 @@ namespace CyberSpaceGamers.Controllers
         {
             return View();
         }
-
+        // This action just returns the Privacy.cshtml view.
         public IActionResult Privacy()
         {
             return View();
