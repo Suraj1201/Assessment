@@ -160,3 +160,15 @@ body {
 .footer-divider {
     border-color: rgba(0,0,0,.12);
 }
+/* Banner sizing (view-only) */
+.banner-img {
+    height: 340px; /* adjust to 300–420px if you like */
+    object-fit: cover; /* fills the width without distortion */
+}
+
+/* larger on desktop */
+@media (min-width: 992px) {
+    .banner-img {
+        height: 420px;
+    }
+}
