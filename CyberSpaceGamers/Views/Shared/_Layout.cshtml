@@ -27,7 +27,7 @@
                             <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Product" ? "active":"")"
                                asp-controller="Product" asp-action="Index">Products</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
                     </ul>
 
                     <div class="d-flex gap-2">
