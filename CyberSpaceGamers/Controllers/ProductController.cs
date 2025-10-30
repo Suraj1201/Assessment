@@ -78,9 +78,15 @@ namespace CyberSpaceGamers.Controllers
             return View(vm);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var product = _db.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }    
+
+            return View(product);
         }
     }
 }
