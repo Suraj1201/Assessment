@@ -4,6 +4,7 @@ using CyberSpaceGamers.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
@@ -24,7 +25,9 @@ namespace CyberSpaceGamers.Controllers
         public IActionResult Index(string? search, string? genre, string? sort, int page = 1)
         {
             IQueryable<Product> query = _db.Products;
+            IQueryable<Product> filter = query.Where(p => p.Genre != null && p.Genre.ToLower() == genre.Trim().ToLower());
 
+            
             if (!string.IsNullOrWhiteSpace(genre))
             {
                 var g = genre.Trim();
@@ -39,13 +42,17 @@ namespace CyberSpaceGamers.Controllers
                     (p.ShortDescription != null && p.ShortDescription.Contains(s, StringComparison.OrdinalIgnoreCase)));*/
             }
 
+            
             query = sort switch
             {
                 "priceAsc" => query.OrderBy(p => p.Price),
                 "priceDesc" => query.OrderByDescending(p => p.Price),
                 "name" => query.OrderBy(p => p.Name),
                 _ => query
+
             };
+
+            
 
             const int pageSize = 9;
             var totalItems = query.Count();
