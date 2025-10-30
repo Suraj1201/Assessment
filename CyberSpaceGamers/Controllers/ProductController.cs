@@ -25,9 +25,7 @@ namespace CyberSpaceGamers.Controllers
         public IActionResult Index(string? search, string? genre, string? sort, int page = 1)
         {
             IQueryable<Product> query = _db.Products;
-            IQueryable<Product> filter = query.Where(p => p.Genre != null && p.Genre.ToLower() == genre.Trim().ToLower());
-
-            
+                        
             if (!string.IsNullOrWhiteSpace(genre))
             {
                 var g = genre.Trim();
@@ -48,7 +46,7 @@ namespace CyberSpaceGamers.Controllers
                 "priceAsc" => query.OrderBy(p => p.Price),
                 "priceDesc" => query.OrderByDescending(p => p.Price),
                 "name" => query.OrderBy(p => p.Name),
-                _ => query
+                _ => query.OrderBy(p => p.Id)
 
             };
 
@@ -67,7 +65,11 @@ namespace CyberSpaceGamers.Controllers
                 Search = search,
                 Genre = genre,
                 Sort = sort,
-                Genres =  _db.Products.Select(p => p.Genre).Distinct(),
+                Genres = _db.Products
+                        .Where(p => p.Genre != null)
+                        .Select(p => p.Genre!)
+                        .Distinct()
+                        .OrderBy(g => g),
                 Products = items,
                 Page = page,
                 TotalPages = totalPages

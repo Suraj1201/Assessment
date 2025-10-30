@@ -26,6 +26,9 @@
         <main class="col-12 col-md-9">
             <div class="d-flex flex-column flex-md-row gap-2 align-items-stretch align-items-md-center mb-3">
                 <form asp-action="Index" method="get" class="flex-grow-1 d-flex gap-2">
+                    <input type="hidden" name="search" value="@Model.Search" />
+                    <input type="hidden" name="genre" value="@Model.Genre" />
+                    <input type="hidden" name="page" value="@Model.Page" />
                     <div class="input-group">
                         <span class="input-group-text">
                             <i class="bi bi-search" aria-hidden="true"></i>
