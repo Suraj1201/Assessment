@@ -172,3 +172,18 @@ body {
         height: 420px;
     }
 }
+/* Style for the "Genres" title */
+/* Blue highlight glowing effect for "Genres" */
+.genre-title {
+    color: white; /* base text color */
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-shadow: 0 0 5px #007bff, 0 0 10px #007bff, 0 0 20px #007bff, 0 0 40px #007bff;
+    transition: all 0.3s ease;
+}
+
+    /* Optional: make glow stronger on hover */
+    .genre-title:hover {
+        text-shadow: 0 0 10px #33b2ff, 0 0 20px #33b2ff, 0 0 40px #33b2ff, 0 0 80px #33b2ff;
+        color: #e6f7ff; /* slightly blush white */
+    }
