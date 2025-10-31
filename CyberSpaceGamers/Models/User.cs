@@ -16,8 +16,5 @@ namespace CyberSpaceGamers.Models
 
         // PasswordHash of the user. Users inputted password will be hashed before inserted into User table. Required means it cannot be null in the database.
         public string? PasswordHash { get; set; }
-
-        // Birthdate of the user. Required means it cannot be null in the database.
-        public DateOnly? DOB { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CyberSpaceGamers.Models.Product
+@{
     ViewData["Title"] = "Product";
     Layout = "_Layout";
 }
@@ -8,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/Product">Products</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Product Name</li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
         </ol>
     </nav>
 
@@ -17,33 +18,32 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="ratio ratio-4x3 d-flex align-items-center justify-content-center text-muted">
-                    Image Placeholder
+                    <img src="~/img/logo.png" alt="Alternate Text" />
                 </div>
             </div>
         </div>
 
         <!-- Details area -->
         <div class="col-md-7">
-            <h1 class="h3 mb-2">Product Name</h1>
+            <h1 class="h3 mb-2">@Model.Name</h1>
 
             <div class="d-flex flex-wrap gap-2 mb-3">
-                <span class="badge text-bg-secondary">Genre</span>
-                <span class="badge text-bg-dark">Age Rating</span>
+                <span class="badge text-bg-secondary">@Model.Genre</span>
+                <span class="badge text-bg-dark">@Model.AgeRating</span>
             </div>
 
             <div class="h4 mb-3">£00.00</div>
 
             <p class="text-muted mb-2">
                 <a href=""></a>
-                Short description goes here. One or two lines that explain the key point.
+                @Model.ShortDescription
             </p>
             <p>
                 Longer description for the product. This is layout content only (no data binding).
             </p>
 
             <div class="d-flex gap-2 mt-3">
-                <button class="btn btn-primary" disabled title="Demo only">Add to Basket</button>
-                <button class="btn btn-outline-secondary" disabled title="Demo only">Add to Wishlist</button>
+                <a class="btn btn-primary" asp-controller="Basket" asp-action="Index">Add to Basket</a>
             </div>
 
             <hr class="my-4" />
@@ -51,8 +51,8 @@
             <div>
                 <h2 class="h6">Details</h2>
                 <ul class="small text-muted mb-0">
-                    <li>Genre: —</li>
-                    <li>Age Rating: —</li>
+                    <li>Genre: @Model.Genre</li>
+                    <li>Age Rating: @Model.AgeRating</li>
                     <li>Platform: —</li>
                     <li>Release: —</li>
                 </ul>

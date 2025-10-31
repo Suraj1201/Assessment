@@ -27,7 +27,6 @@
         <main class="col-12 col-md-9">
             <div class="d-flex flex-column flex-md-row gap-2 align-items-stretch align-items-md-center mb-3">
                 <form asp-action="Index" method="get" class="flex-grow-1 d-flex gap-2">
-                    <input type="hidden" name="search" value="@Model.Search" />
                     <input type="hidden" name="genre" value="@Model.Genre" />
                     <input type="hidden" name="page" value="@Model.Page" />
                     <div class="input-group">
@@ -77,22 +76,40 @@
             <!-- Pagination navigation section -->
             <nav class="mt-4">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
+                    <li class="page-item">
                         <span class="page-link d-flex align-items-center gap-1">
-                            ← Previous
+                        @if (Model.Page > 1)
+                        {
+                            <a  class="page-link d-flex align-items-center gap-1" asp-action="Index" asp-route-page="@(Model.Page - 1)"
+                                asp-route-search="@Model.Search" asp-route-sort="@Model.Sort" asp-route-genre="@Model.Genre">
+                                ← Previous
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-outline-secondary" disabled>← Previous</button>
+                        }
                         </span>
                     </li>
 
+                    <!--Page Number-->
                     <li class="page-item active">
-                        <span class="page-link">1</span>
+                        <span class="mx-2">Page @Model.Page of @Model.TotalPages</span>
                     </li>
 
                     <!-- Make Next go to next page-->
                     <li class="page-item">
-                        <a class="page-link d-flex align-items-center gap-1" asp-action="Index" asp-route-page="@(Model.Page +1)"
-                        asp-route-search="@Model.Search" asp-route-sort="@Model.Sort" asp-route-genre="@Model.Genre">
-                            Next →
-                        </a>
+                        @if (Model.Page < Model.TotalPages)
+                        {
+                            <a class="page-link d-flex align-items-center gap-1" asp-action="Index" asp-route-page="@(Model.Page +1)"
+                            asp-route-search="@Model.Search" asp-route-sort="@Model.Sort" asp-route-genre="@Model.Genre">
+                                Next →
+                            </a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-outline-secondary" disabled>Next →</button>
+                        }
                     </li>
                 </ul>
             </nav>
