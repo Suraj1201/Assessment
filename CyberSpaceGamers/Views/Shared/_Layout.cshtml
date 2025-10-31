@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CyberSpaceGamers.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
 <body class="body-dark">
     <header>
@@ -28,6 +29,12 @@
                                asp-controller="Product" asp-action="Index">Products</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Account" ? "active":"")"
+                               asp-controller="Account" asp-action="Dashboard">
+                                <i class="bi bi-person-circle me-1"></i> Account
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="d-flex gap-2">
