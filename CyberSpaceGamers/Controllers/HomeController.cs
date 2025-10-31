@@ -28,5 +28,24 @@ namespace CyberSpaceGamers.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }
+
+        // this action just returns the About.cshtml view
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        // this action just returns the Support.cshtml view
+        public IActionResult Support()
+        {
+            return View();
+        }
+
+        // this action just returns the Contact.cshtml
+        public IActionResult Contact()
+        {
+            return View();
+        }
+    }   
+
 }

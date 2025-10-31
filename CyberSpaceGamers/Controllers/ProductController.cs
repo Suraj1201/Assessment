@@ -88,5 +88,14 @@ namespace CyberSpaceGamers.Controllers
 
             return View(product);
         }
+        
+        public IActionResult Create(Product obj)
+        {
+            _db.Products.Add(obj);
+            _db.SaveChanges();
+            
+            return View(obj);
+            
+        }
     }
 }
