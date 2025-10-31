@@ -3,17 +3,24 @@
     ViewData["Title"] = "Products";
     ViewData["ActiveNav"] = "Products";
 }
+<!-- Browse Games Section -->
 
 <section class="container">
+    <div class="p-4 p-md-5 mb-4 text-center rounded-3 shadow-sm csg-hero">
+        <h1 class="display-6 fw-bold"> Browse Games </h1>
+            <p class="mb-0">Search, Filter and Find your next favourite</p>
+        
+    </div>
     <div class="row">
         <!-- Genres -->
         <aside class="col-12 col-md-3 mb-4">
             <div class="card card-dark shadow-sm rounded-3xl">
-                <div class="card-header fw-semibold">Genres</div>
+                <div class="card-header fw-semibold genre-title">Genres</div>
                 <div class="list-group list-group-flush list-group-dark">
                     @foreach (var g in Model.Genres)
                     {
-                        <a asp-action="Index" asp-route-genre="@g"
+                        var selectedGenre = Model.Genre == g ? null : g;
+                        <a asp-action="Index" asp-route-genre="@selectedGenre"
                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center @(Model.Genre == g ? "active" : "")">
                             @g <i class="bi bi-chevron-right"></i>
                         </a>
@@ -21,6 +28,8 @@
                 </div>
             </div>
         </aside>
+       
+
 
         <!-- Main Content -->
         <main class="col-12 col-md-9">
@@ -118,3 +127,8 @@
         </main>
     </div>
 </section>
+@{
+    ViewData["Title"] = "Products";
+}
+
+
