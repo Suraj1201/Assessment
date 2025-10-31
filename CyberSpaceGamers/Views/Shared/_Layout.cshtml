@@ -24,19 +24,27 @@
 
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Products -->
                         <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Product" ? "active":"")"
-                               asp-controller="Product" asp-action="Index">Products</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Product" ? "active" : "")"
+                               asp-controller="Product" asp-action="Index">
+                                Products
+                            </a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+
+                        <!-- Privacy (keep if you want it in navbar) -->
                         <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Account" ? "active":"")"
-                               asp-controller="Account" asp-action="Dashboard">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+
+                        <!-- Account (goes to the account landing page) -->
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Account" ? "active" : "")"
+                               asp-controller="Account" asp-action="Index">
                                 <i class="bi bi-person-circle me-1"></i> Account
                             </a>
                         </li>
                     </ul>
-
                     <div class="d-flex gap-2">
                         <a class="btn btn-outline-light" asp-controller="Basket" asp-action="Index">🧺 Basket</a>
                         <a class="btn btn-warning" asp-controller="Account" asp-action="Login">Login/SignUp</a>
