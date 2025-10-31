@@ -182,8 +182,48 @@ body {
     transition: all 0.3s ease;
 }
 
-    /* Optional: make glow stronger on hover */
+    /*  make glow stronger on hover */
     .genre-title:hover {
         text-shadow: 0 0 10px #33b2ff, 0 0 20px #33b2ff, 0 0 40px #33b2ff, 0 0 80px #33b2ff;
         color: #e6f7ff; /* slightly blush white */
+    }
+<!-- Hero Banner -->
+
+.browse-section {
+    display: flex;
+    justify-content: flex-start; /* ?? moves to the left side */
+    margin: 20px 0 25px 60px; /* spacing: top, right, bottom, left */
+    text-align: left;
+}
+
+.browse-box {
+    border: 2px solid #00bfff;
+    border-radius: 12px;
+    padding: 15px 40px;
+    background: rgba(173, 216, 230, 0.15);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    width: fit-content;
+}
+
+    .browse-box:hover {
+        box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+        transform: scale(1.02);
+    }
+
+    .browse-box h3 {
+        color: #f0f8ff;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .browse-box p {
+        color: #cceaff;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .browse-box .text-primary {
+        color: #00bfff !important;
     }
