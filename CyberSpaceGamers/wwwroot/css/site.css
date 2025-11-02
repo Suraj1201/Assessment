@@ -207,23 +207,67 @@ body {
     width: fit-content;
 }
 
-    .browse-box:hover {
-        box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
-        transform: scale(1.02);
+.browse-box:hover {
+    box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+    transform: scale(1.02);
+}
+
+.browse-box h3 {
+    color: #f0f8ff;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.browse-box p {
+    color: #cceaff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.browse-box .text-primary {
+    color: #00bfff !important;
+}
+/* Hero Banner Highlight */
+@keyframes pulseGlow {
+    0%, 100% {
+        text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
     }
 
-    .browse-box h3 {
-        color: #f0f8ff;
-        font-weight: 700;
-        margin-bottom: 6px;
+    50% {
+        text-shadow: 0 0 20px #33b2ff, 0 0 40px #33b2ff, 0 0 80px #33b2ff;
+    }
+}
+/*brower*/
+.csg-hero {
+    background-color: #0b1320; /* dark background */
+    color: #fff;
+    border: 2px solid rgba(0, 191, 255, 0.8); /* light blue border */
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); /* glowing outline */
+    padding: 2rem;
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+    /* Glow pulse on hover */
+    .csg-hero:hover {
+        box-shadow: 0 0 25px rgba(0, 191, 255, 0.9);
+        transform: translateY(-2px);
     }
 
-    .browse-box p {
-        color: #cceaff;
+    /* Heading and text adjustments */
+    .csg-hero h3 {
+        color: #ffffff;
+        font-weight: 800;
+    }
+
+    .csg-hero p {
+        color: #cfd9ff;
         font-size: 1rem;
         margin: 0;
     }
 
-    .browse-box .text-primary {
+    .csg-hero .text-primary {
         color: #00bfff !important;
+        font-weight: 600;
+        position: relative;
     }
