@@ -1,20 +1,105 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CyberSpaceGamers.Models;
+using CyberSpaceGamers.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace CyberSpaceGamers.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = new ApplicationUser
+            {
+                UserName = model.Username
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                // Assign the "User" role to new users
+                await _userManager.AddToRoleAsync(user, "User");
+
+                // Log the user in
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            foreach (var error in result.Errors)
+                ModelState.AddModelError("", error.Description);
+
+            return View(model);
+        }
+
+        [HttpGet]
         // GET: /Account/Login
         public IActionResult Login()
         {
             return View();
         }
 
-        // GET: /Account/Register
-        public IActionResult Register()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var result = await _signInManager.PasswordSignInAsync(
+                model.Username,
+                model.Password,
+                isPersistent: false,
+                lockoutOnFailure: true);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (result.IsLockedOut)
+            {
+                ModelState.AddModelError("", "Your account is locked. Please try again in 5 minutes.");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid username or password");
+            }
+
+            return View(model);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+        // GET: /Account/Register
 
         // /Account
         public IActionResult Index()
@@ -30,10 +115,99 @@ namespace CyberSpaceGamers.Controllers
         }
 
         // GET: /Account/Profile
-        public IActionResult Profile()
+        [HttpGet]
+        public async Task<IActionResult> Profile()
         {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login");
+            var model = new ProfileViewModel
+            {
+                Username = user.UserName
+            };
             // simple view-only page for now
-            return View();
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Profile(ProfileViewModel model)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login");
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            if (!string.IsNullOrEmpty(model.CurrentPassword) &&
+                !string.IsNullOrEmpty(model.NewPassword))
+            {
+                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    await _signInManager.RefreshSignInAsync(user);
+                    ViewBag.StatusMessage = "Password changed successfully.";
+                    model.CurrentPassword = "";
+                    model.NewPassword = "";
+                    model.ConfirmPassword = "";
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                        ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAccount()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+
+            if (result.Succeeded)
+            {
+                await _signInManager.SignOutAsync();
+                TempData["Message"] = "Your account has been deleted successfully.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return RedirectToAction("Profile", "Account");
+
         }
     }
+    public class SomeController : Controller
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public SomeController(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        public async Task<IActionResult> Profile()
+        {
+            // Get the currently logged-in user
+            var user = await _userManager.GetUserAsync(User);
+
+            // user.Username gives the username
+            // user.Id gives the user id
+            return View(user);
+        }
+    }
+
+    
 }

@@ -9,8 +9,7 @@ namespace CyberSpaceGamers.Models
     // Each instance of this class corresponds to one row in the Products table.
     public class Product
     {
-        [Key]
-
+        
         public int Id { get; set; }
         // Primary key. EF automatically treats 'Id' as the primary key.
 
@@ -21,10 +20,10 @@ namespace CyberSpaceGamers.Models
         // Name of the product. Required means it cannot be null in the database.
 
         [MaxLength(300)]
-        public string? ShortDescription { get; set; } 
+        public string? ShortDescription { get; set; }
         // Optional short description about the product.
 
-
+        [Precision(18,2)]
         [Range(0.01, 100.99, ErrorMessage = "Price must be between 0.01-100.99")]
         public decimal Price { get; set; }
         // Price of the product. Range ensures the value stays within 0-9999.

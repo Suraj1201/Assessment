@@ -18,10 +18,19 @@
         <div class="price">£@Model.Price</div>
 
         <div class="mt-auto d-grid">
-            <form method="post">
-                <input type="hidden" name="id" value="@Model.Id"/>
-                <a class="btn btn-primary w-100" asp-controller="Basket" asp-action="Index" type="button" aria-disabled="true">Add to Basket</a>
-            </form>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form asp-controller="Basket" asp-action="AddToBasket" method="post">
+                    <input type="hidden" name="productId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary">Add to Basket</button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login" class="btn btn-primary w-100" type="button">
+                    Login to Add
+                </a>
+            }
         </div>
     </div>
 </div>

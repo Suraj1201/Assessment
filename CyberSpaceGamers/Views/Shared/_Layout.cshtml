@@ -37,6 +37,13 @@
                             <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
 
+                        <li class="nav-item">
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <a class="nav-link text-danger text-capitalize" asp-controller="Product" asp-action="ProductControl">Edit_Product</a>
+                            }
+                        </li>
+                        
                         <!-- Account (goes to the account landing page) -->
                         <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Account" ? "active" : "")"
@@ -45,9 +52,31 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="d-flex gap-2">
+
+                    <div class="d-flex gap-2">                       
                         <a class="btn btn-outline-light" asp-controller="Basket" asp-action="Index">🧺 Basket</a>
-                        <a class="btn btn-warning" asp-controller="Account" asp-action="Login">Login/SignUp</a>
+                        <!--<a class="btn btn-warning" asp-controller="Account" asp-action="Login">Login/SignUp</a>-->
+                        @{
+                            var isLoggedIn = User?.Identity?.IsAuthenticated == true;
+                            var isAdmin = User?.IsInRole("Admin") == true;
+                            var username = User?.Identity?.Name ?? "";
+                        }
+                        <a class="btn btn-warning"
+                           asp-controller="Account"
+                           asp-action="@(isLoggedIn ? "Index" : "Login")">
+                            @if (!isLoggedIn)
+                            {
+                                @:Login/SignUp
+                            }
+                            else if (isAdmin)
+                            {
+                                @:Admin
+                            }
+                            else
+                            {
+                                @username
+                            }
+                        </a>
                     </div>
                 </div>
             </div>

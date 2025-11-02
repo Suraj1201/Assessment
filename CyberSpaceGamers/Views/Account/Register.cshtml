@@ -1,31 +1,40 @@
-﻿@{
-    ViewData["Title"] = "Create Account";
+﻿@model CyberSpaceGamers.Models.ViewModels.RegisterViewModel;
+@{
+    ViewData["Title"] = "Register";
     Layout = "_Layout";
 }
 
 <div class="container py-4" style="max-width: 540px;">
     <h1 class="h3 mb-3">Create Account</h1>
 
-    <form>
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="mb-3">
-            <label class="form-label" for="reg-username">Username</label>
-            <input id="reg-username" class="form-control" placeholder="Choose a username" />
+            <label class="form-label" asp-for="Username">Username</label>
+            <input asp-for="Username" class="form-control" placeholder="Choose a username" />
+            <span asp-validation-for="Username" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="reg-password">Password</label>
-            <input id="reg-password" type="password" class="form-control" placeholder="Create a password" />
+            <label class="form-label" asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Create a password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label class="form-label" for="reg-confirm">Confirm Password</label>
-            <input id="reg-confirm" type="password" class="form-control" placeholder="Re-enter password" />
+            <label class="form-label" asp-for="ConfirmPassword">Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Re-enter password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
 
-        <button class="btn btn-primary w-100" disabled title="Demo only">Create account</button>
+        <button class="btn btn-primary w-100"  title="Demo only">Create Account</button>
         <p class="text-center mt-3 mb-0">
             Have an account already?
             <a asp-controller="Account" asp-action="Login">Login</a>
         </p>
     </form>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

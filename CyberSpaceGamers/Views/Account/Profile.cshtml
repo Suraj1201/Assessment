@@ -1,7 +1,53 @@
-﻿@{
+﻿@model CyberSpaceGamers.Models.ViewModels.ProfileViewModel
+@{
     ViewData["Title"] = "Profile";
 }
-<section class="container py-4">
-    <h1>Profile</h1>
-    <p class="text-muted">Profile page placeholder. We will implement this later.</p>
-</section>
+
+<h2>Profile</h2>
+
+<div class="mb-3">
+    <label>Username</label>
+    <input class="form-control" value="@Model.Username" readonly />
+</div>
+
+<form asp-action="Profile" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="CurrentPassword"></label>
+        <input asp-for="CurrentPassword" class="form-control" />
+        <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NewPassword"></label>
+        <input asp-for="NewPassword" class="form-control" />
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Change Password</button>
+    <button asp-controller="Account" asp-action="Index" class="btn btn-primary">Back</button>
+    
+   
+</form>
+
+
+<form asp-action="DeleteAccount" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+    <button type="submit" class="btn btn-danger">
+        Delete My Account
+    </button>
+</form>
+@if (ViewBag.StatusMessage != null)
+{
+    <div class="alert alert-success mt-3">@ViewBag.StatusMessage</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
