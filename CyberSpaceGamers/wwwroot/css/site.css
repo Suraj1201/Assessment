@@ -287,3 +287,96 @@ body {
         margin-bottom: .35rem;
     }
 }
+/* Product cards: lock price row to bottom */
+.product-card {
+    height: 100%;
+}
+
+    .product-card .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card .price-row {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* optional: ensure consistent title/desc height so grids look tidy */
+    .product-card .title {
+        min-height: 2.5rem;
+    }
+    /* ~1–2 lines */
+    .product-card .subtitle {
+        min-height: 2.75rem;
+    }
+/* ~2 lines */
+.product-card {
+    height: 100%;
+}
+    /* card fills column */
+    .product-card .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+    /* you already do via classes */
+    .product-card .price {
+        font-weight: 600;
+    }
+/* visual tweak */
+html, body {
+    height: 100%;
+}
+/* ensure full-height root */
+body {
+    margin: 0;
+}
+/* kill any UA margin just in case */
+
+.site-footer { /* footer sits at bottom */
+    margin-top: auto;
+}
+
+    /* optional: prevent any extra gap created by footer internals */
+    .site-footer .footer-divider {
+        margin-bottom: 0 !important;
+    }
+/* --- Home carousel round indicators --- */
+#homeCarousel .carousel-indicators,
+#homeCarousel .carousel-indicators.circles {
+    position: absolute;
+    bottom: 12px; /* tweak if you want them higher/lower */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* space between dots */
+    margin: 0;
+    width: auto; /* prevent the long segmented bar look */
+    padding: 0;
+}
+
+    #homeCarousel .carousel-indicators [data-bs-target] {
+        width: 12px; /* dot size */
+        height: 12px;
+        border-radius: 50%;
+        border: 0;
+        background-color: #000; /* INACTIVE = black */
+        opacity: 1; /* solid color, not faded */
+        flex: 0 0 auto; /* don't stretch */
+        box-shadow: 0 0 0 2px rgba(255,255,255,.25); /* subtle ring for contrast on images */
+    }
+
+    #homeCarousel .carousel-indicators .active {
+        background-color: #0d6efd; /* ACTIVE = blue (Bootstrap primary) */
+        box-shadow: 0 0 0 2px rgba(255,255,255,.35);
+    }
+
+    /* Remove any inherited width/height that might create bars instead of dots */
+    #homeCarousel .carousel-indicators button::before,
+    #homeCarousel .carousel-indicators button::after {
+        content: none;
+    }
