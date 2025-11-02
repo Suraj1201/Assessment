@@ -42,15 +42,8 @@
                             {
                                 <a class="nav-link text-danger text-capitalize" asp-controller="Product" asp-action="ProductControl">Edit_Product</a>
                             }
-                        </li>
+                        </li>   
                         
-                        <!-- Account (goes to the account landing page) -->
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Account" ? "active" : "")"
-                               asp-controller="Account" asp-action="Index">
-                                <i class="bi bi-person-circle me-1"></i> Account
-                            </a>
-                        </li>
                     </ul>
 
                     <div class="d-flex gap-2">                       
@@ -74,7 +67,7 @@
                             }
                             else
                             {
-                                @username
+                                <i class="bi bi-person-circle me-1"></i>@username
                             }
                         </a>
                     </div>

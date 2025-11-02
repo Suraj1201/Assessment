@@ -42,10 +42,10 @@ namespace CyberSpaceGamers.Controllers
                 // Assign the "User" role to new users
                 await _userManager.AddToRoleAsync(user, "User");
 
-                // Log the user in
-                await _signInManager.SignInAsync(user, isPersistent: false);
+                // Show success message and redirect to login
+                TempData["SuccessMessage"] = "Account created successfully! Please log in.";
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
 
             foreach (var error in result.Errors)
