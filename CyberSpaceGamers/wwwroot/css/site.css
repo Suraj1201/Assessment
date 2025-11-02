@@ -227,3 +227,19 @@ body {
     .browse-box .text-primary {
         color: #00bfff !important;
     }
+
+/* Orders page contrast + spacing (single-page orders) */
+.page-orders .card {
+    background: #fff;
+    color: #212529;
+}
+
+.page-orders hr {
+    border-color: rgba(0,0,0,.1);
+}
+
+@media (max-width: 576px) {
+    .order-meta .col {
+        margin-bottom: .35rem;
+    }
+}
