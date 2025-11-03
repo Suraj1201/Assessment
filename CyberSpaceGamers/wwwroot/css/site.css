@@ -380,3 +380,69 @@ body {
     #homeCarousel .carousel-indicators button::after {
         content: none;
     }
+/* === Product List Styling === */
+
+/* Make button smaller and match table header colour */
+.btn-create {
+    background-color: #2d6cdf; /* same as your theme blue */
+    border-color: #2d6cdf;
+    font-size: 0.8rem; /* smaller text */
+    padding: 4px 10px; /* smaller size */
+    border-radius: 6px;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(45, 108, 223, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+    .btn-create:hover {
+        background-color: #3d7cff;
+        box-shadow: 0 0 12px rgba(45, 108, 223, 0.6);
+    }
+
+/* Title + button spacing */
+.product-title {
+    margin-bottom: 0.20rem; /* small gap under PRODUCT LIST */
+}
+
+/* Smaller Create button, same blue as header, and space above table */
+.btn-create {
+    background-color: #2d6cdf; /* your theme blue */
+    border-color: #2d6cdf;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(45, 108, 223, 0.3);
+    margin-bottom: 0.75rem; /* <– separates button from table */
+}
+
+    /* Hover effect for the button */
+    .btn-create:hover {
+        background-color: #3d7cff;
+        box-shadow: 0 0 12px rgba(45, 108, 223, 0.6);
+    }
+
+/* Table header same colour as button */
+.product-table-header {
+    background-color: #2d6cdf;
+    color: #ffffff;
+}
+
+    .product-table-header th {
+        font-weight: 700;
+        padding: 10px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+        .product-table-header th:last-child {
+            border-right: none;
+        }
+
+/* Clean border + subtle glow for whole table */
+.product-table {
+    border: 1px solid #2d6cdf;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(45, 108, 223, 0.3);
+}

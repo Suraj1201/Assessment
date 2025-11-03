@@ -16,27 +16,18 @@
            </a>
        </div>
 
-    <table class="table table-bordered text-white ">
-        <thead>
+    <table class="table table-bordered text-white product-table">
+        <thead class="product-table-header">
             <tr>
-                <th>
-                    Product Name
-                </th>
-                <th>
-                    Short Description
-                </th>
-                <th>
-                    Price
-                </th>
-                <th>
-                    Age Rating
-                </th>
-                <th>
-                    Genre
-                </th>
+                <th>Product Name</th>
+                <th>Short Description</th>
+                <th>Price</th>
+                <th>Age Rating</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
+
             @foreach (var obj in Model)
             {
                 <tr>
