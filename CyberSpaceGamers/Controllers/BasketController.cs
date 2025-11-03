@@ -1,10 +1,12 @@
 ﻿using CyberSpaceGamers.Data;
 using CyberSpaceGamers.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CyberSpaceGamers.Controllers
 {
@@ -27,7 +29,7 @@ namespace CyberSpaceGamers.Controllers
                 return RedirectToAction("Login", "Account");
 
             var BasketItems = await _db.BasketItems
-                .Where(b => b.UserId == user.Id )
+                .Where(b => b.UserId == user.Id)
                 .Include(b => b.Product)
                 .ToListAsync();
 
@@ -38,7 +40,7 @@ namespace CyberSpaceGamers.Controllers
 
         public async Task<IActionResult> AddToBasket(int productId)
         {
-            var user = await _userManager.GetUserAsync (User);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
                 return RedirectToAction("Login", "Account");
 
@@ -61,15 +63,73 @@ namespace CyberSpaceGamers.Controllers
 
         public async Task<IActionResult> Remove(int id)
         {
-            var item = await _db.BasketItems.FindAsync(id);
-                
-            if (item != null)
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+
+            var basketItem = await _db.BasketItems
+                .FindAsync(id);
+
+
+            if (basketItem != null)
             {
-                _db.BasketItems.Remove(item);
+                _db.BasketItems.Remove(basketItem);
                 await _db.SaveChangesAsync();
             }
             return RedirectToAction("Index");
 
+        }
+
+        
+        public IActionResult Orders()
+        {
+            
+            return View();
+        }
+
+
+        public async Task<IActionResult> Checkout()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+
+
+            var BasketItems = await _db.BasketItems
+                .Where(b => b.UserId == user.Id)
+                .Include(b => b.Product)
+                .ToListAsync();
+
+            var order = new Order
+            {
+                UserId = user.Id,
+                OrderDate = DateTime.Now,
+                Total = BasketItems.Sum(b => b.Product.Price)
+
+            };
+            _db.Orders.Add(order);
+            await _db.SaveChangesAsync();
+
+            foreach (var item in BasketItems)
+            {
+                var OrderItem = new OrderItem
+                {
+                    OrderId = order.Id,
+                    ProductId = item.ProductId,
+                    Price = item.Product.Price
+                };
+                _db.OrderItems.Add(OrderItem);
+            }
+
+            /*Remove from the basket when checked out*/
+
+            _db.BasketItems.RemoveRange(BasketItems);
+
+            await _db.SaveChangesAsync();
+
+            TempData["Message"] = "Checkout Successful";
+
+            return RedirectToAction("Orders", "Basket");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CyberSpaceGamers.Data;
 using CyberSpaceGamers.Models;
 using CyberSpaceGamers.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -88,19 +89,22 @@ namespace CyberSpaceGamers.Controllers
 
             return View(product);
         }
-        
+
+        [Authorize]
         public IActionResult ProductControl()
         {
             List<Product> objProductList = _db.Products.ToList();
             return View(objProductList);
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
-        [HttpPost]
 
+        [HttpPost]
+        [Authorize]
         public IActionResult Create(Product obj)
         {
             if (obj.Name == obj.ShortDescription)
@@ -135,6 +139,7 @@ namespace CyberSpaceGamers.Controllers
 
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Product obj)
         {
             if(ModelState.IsValid)
@@ -164,6 +169,7 @@ namespace CyberSpaceGamers.Controllers
             return View(ProductFromDb);
         }
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         public IActionResult DeletePOST(int? id)
         {
             Product? obj = _db.Products.Find(id);

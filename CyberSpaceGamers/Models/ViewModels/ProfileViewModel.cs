@@ -6,7 +6,9 @@ namespace CyberSpaceGamers.Models.ViewModels
     {
         public string Username { get; set; } = string.Empty;
 
+        [Required]
         [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "Password must be at least 8 characters.")]
         [Display(Name = "Current Password")]
         public string CurrentPassword { get; set; } = string.Empty;
 

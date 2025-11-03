@@ -107,12 +107,7 @@ namespace CyberSpaceGamers.Controllers
             return View(); // will render Views/Account/Index.cshtml
         }
 
-        // GET: /Account/Orders
-        public IActionResult Orders()
-        {
-            // simple view-only page for now
-            return View();
-        }
+        
 
         // GET: /Account/Profile
         [HttpGet]
