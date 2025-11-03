@@ -105,10 +105,17 @@ namespace CyberSpaceGamers.Controllers
         public IActionResult Index()
         {
             return View(); // will render Views/Account/Index.cshtml
-        }
-
         
 
+        // GET: /Account/Profile
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login");
+            var model = new ProfileViewModel
+            {
         // GET: /Account/Profile
         [HttpGet]
         public async Task<IActionResult> Profile()
@@ -202,6 +209,7 @@ namespace CyberSpaceGamers.Controllers
             // user.Id gives the user id
             return View(user);
         }
+
     }
 
     
