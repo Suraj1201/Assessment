@@ -15,21 +15,21 @@
         </form>
         <style>.product-link:hover {text-decoration: underline !important;}</style>
         <div class="small text-muted mb-2">@Model.ShortDescription</div>
-        <div class="price">£@Model.Price</div>
+        <!-- move the 'auto push to bottom' onto the PRICE -->
+        <div class="price mt-auto fw-semibold">£@Model.Price.ToString("0.00")</div>
 
-        <div class="mt-auto d-grid">
+        <!-- button row: no mt-auto; just a small gap above it -->
+        <div class="d-grid mt-2">
             @if (User.Identity.IsAuthenticated)
             {
-                <form asp-controller="Basket" asp-action="AddToBasket" method="post">
+                <form asp-controller="Basket" asp-action="AddToBasket" method="post" class="m-0">
                     <input type="hidden" name="productId" value="@Model.Id" />
-                    <button type="submit" class="btn btn-primary">Add to Basket</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Add to Basket</button>
                 </form>
             }
             else
             {
-                <a asp-controller="Account" asp-action="Login" class="btn btn-primary w-100" type="button">
-                    Login to Add
-                </a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-sm" type="button">Login to Add</a>
             }
         </div>
     </div>
