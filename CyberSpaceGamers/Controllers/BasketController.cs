@@ -71,5 +71,10 @@ namespace CyberSpaceGamers.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public IActionResult Orders ()
+        {
+            return View();
+        }
     }
 }
