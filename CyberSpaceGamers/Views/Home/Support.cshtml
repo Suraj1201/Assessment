@@ -6,18 +6,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Support Page</title>
-    <style>
-        #searchinput {
-            width: 400px;
-            height: 40px; 
-            font-size: 18px; 
-            padding: 5px 10px; 
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center</title>
 </head>
 <body>
-    <h1>Support Center</h1>
-    <input type="text" id="searchinput" placeholder="Search...">
+
+    <header>
+        <h1>Support</h1>
+        <p>How can we help you today?</p>
+
+        <form action="#" method="get">
+            <label for="search">Search help articles:</label>
+            <input type="text" id="search" name="q" placeholder="Type your question...">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main>
+        <section>
+            <h2>Popular Topics</h2>
+            <ul>
+                <li><a href="#">Reset your password</a></li>
+                <li><a href="#">Update billing information</a></li>
+                <li><a href="#">Track your order</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Browse by Category</h2>
+            <ul>
+                <li><a href="#">Getting Started</a></li>
+                <li><a href="#">Account & Billing</a></li>
+                <li><a href="#">Technical Support</a></li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>

@@ -3,3 +3,50 @@
 *@
 @{
 }
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<h2>Contact Us</h2>
+
+<form id="contactForm">
+    <div>
+        <label for="name">Name</label><br />
+        <input type="text" id="name" name="name" required />
+    </div>
+
+    <div>
+        <label for="email">Email</label><br />
+        <input type="email" id="email" name="email" required />
+    </div>
+
+    <div>
+        <label for="subject">Subject</label><br />
+        <input type="text" id="subject" name="subject" />
+    </div>
+
+    <div>
+        <label for="message">Message</label><br />
+<textarea id="message" name="message" required></textarea>
+    </div>
+
+    <button type="submit">Send</button>
+</form>
+
+<p id="responseMessage" style="margin-top: 1rem; color: green;"></p>
+
+<script>
+    // Simulate sending message (no backend)
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // stop page reload
+
+        // You could collect values here if needed
+        const name = document.getElementById("name").value;
+
+        // Display a simple confirmation message
+        document.getElementById("responseMessage").textContent = `Thank you, ${name}! Your message has been sent (simulated).`;
+
+        // Optionally clear the form
+        this.reset();
+    });
+</script>
