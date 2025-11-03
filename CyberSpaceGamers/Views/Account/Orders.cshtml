@@ -1,60 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Your Order History";
-    string Badge(string status)
-    {
-        var s = (status ?? "").ToLower();
-        return s switch
-        {
-            "completed" => "badge bg-success",
-            "processing" => "badge bg-warning text-dark",
-            "cancelled" => "badge bg-secondary",
-            _ => "badge bg-light text-dark"
-        };
-    }
 }
 <section class="container py-4 page-orders">
     <h1 class="display-6 fw-bold text-uppercase mb-3">Your Order History</h1>
 
-    <!-- Order 1 -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <div class="row row-cols-1 row-cols-md-6 gy-2 order-meta">
-                <div class="col"><strong>Date:</strong><br>6 Oct, 2025</div>
-                <div class="col"><strong>Order #:</strong><br>10090124489</div>
-                <div class="col"><strong>Product:</strong><br>BattleField 6</div>
-                <div class="col"><strong>Price:</strong><br>£89.99</div>
-                <div class="col"><strong>Total:</strong><br>£89.99</div>
-                <div class="col"><strong>Status:</strong><br><span class="@Badge("Completed")">COMPLETED</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Order 2 -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <div class="row row-cols-1 row-cols-md-6 gy-2 order-meta">
-                <div class="col"><strong>Date:</strong><br>25 Oct, 2025</div>
-                <div class="col"><strong>Order #:</strong><br>10090129901</div>
-                <div class="col"><strong>Product:</strong><br>Resident Evil Village</div>
-                <div class="col"><strong>Price:</strong><br>£54.50</div>
-                <div class="col"><strong>Total:</strong><br>£54.50</div>
-                <div class="col"><strong>Status:</strong><br><span class="@Badge("Processing")">PROCESSING</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Order 3 -->
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <div class="row row-cols-1 row-cols-md-6 gy-2 order-meta">
-                <div class="col"><strong>Date:</strong><br>31 Oct, 2025</div>
-                <div class="col"><strong>Order #:</strong><br>10090130007</div>
-                <div class="col"><strong>Product:</strong><br>Josh: Empires Unite</div>
-                <div class="col"><strong>Price:</strong><br>£20.99</div>
-                <div class="col"><strong>Total:</strong><br>£20.99</div>
-                <div class="col"><strong>Status:</strong><br><span class="@Badge("Cancelled")">CANCELLED</span></div>
-            </div>
-        </div>
+    <!-- Items table -->
+    <div class="table-responsive">
+        <table class="table table-sm align-middle mb-0 order-table">
+            <thead>
+                <!-- new meta row -->
+                <tr class="table-secondary">
+                    <th colspan="2" class="text-start">Date: 6 Oct, 2025</th>
+                    <th class="text-end">Order #: 10090124489</th>
+                </tr>
+                <!-- existing header row -->
+                <tr>
+                    <th scope="col">Product Name</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-end">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BattleField 6</td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">£29.99</td>
+                </tr>
+                <tr>
+                    <td>Super Smash Bros Ultimate</td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">£54.50</td>
+                </tr>
+                <tr>
+                    <td>Fallout 4</td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">£11.99</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2" class="text-end">Total</th>
+                    <th class="text-end">£96.48</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
     @* Optional empty state for later

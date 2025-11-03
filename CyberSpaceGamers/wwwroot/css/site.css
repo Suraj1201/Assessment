@@ -16,10 +16,6 @@ html {
   position: relative;
   min-height: 100%;
 }
-
-body {
-  margin-bottom: 60px;
-}
 /* === Theme tokens === */
 :root {
     --navy-900: #06132b;
@@ -446,3 +442,56 @@ body {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(45, 108, 223, 0.3);
 }
+
+.product-card {
+    height: 100%;
+}
+
+    .product-card .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card .price {
+        font-weight: 600;
+    }
+/* === Order table: white theme === */
+.table.order-table {
+    background: #ffffff;
+    color: #0b1d3b; /* navy text to match site */
+    border-radius: 14px;
+    overflow: hidden; /* keep rounded corners */
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+    /* header rows (Date/Order# meta row is already white from earlier) */
+    .table.order-table thead th {
+        background: #ffffff;
+        color: #0b1d3b;
+    }
+
+    /* body cells white with subtle separators */
+    .table.order-table tbody td {
+        background: #ffffff;
+        border-top: 1px solid rgba(0,0,0,.08);
+    }
+
+    /* optional: gentle zebra to help readability (remove if you don't want it) */
+    .table.order-table tbody tr:nth-child(even) td {
+        background: #fafbff;
+    }
+
+    /* total row: light grey strip + bold */
+    .table.order-table tfoot td {
+        background: #f2f5ff;
+        color: #0b1d3b;
+        font-weight: 700;
+        border-top: 1px solid rgba(0,0,0,.12);
+    }
+
+    /* unify border color everywhere */
+    .table.order-table td,
+    .table.order-table th {
+        border-color: rgba(0,0,0,.08);
+    }
+
