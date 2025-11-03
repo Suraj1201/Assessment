@@ -35,8 +35,14 @@
                 </div>
             </a>
         </div>
-        <form asp-controller="Account" asp-action="Logout" method="post">
+        <form asp-controller="Account" asp-action="Logout" method="post" class="mx-2">
             <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+
+        <form class="mx-2" asp-action="DeleteAccount" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+            <button type="submit" class="btn btn-danger">
+                Delete My Account
+            </button>
         </form>
     </div>
 </section>
