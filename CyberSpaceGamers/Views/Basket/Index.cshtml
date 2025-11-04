@@ -11,12 +11,12 @@
         <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">← Back to Products</a>   <!-- link to go back to the product list -->
     </div>
 
-    @if (Model == null || !Model.Any())     <!-- if basket is empty -->
+    @if (Model == null || !Model.Any())     // if basket is empty -->
     {
         <div class="alert alert-info">Your basket is empty.</div>
     }
 
-        else        <!-- if basket has items -->
+        else        // if basket has items -->
     {
         <div class="container py-4">
 
