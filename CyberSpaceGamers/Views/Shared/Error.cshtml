@@ -1,18 +1,18 @@
 ﻿@model ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = "Error";     // Sets the title of the web page shown on the browser tab
 }
-
+@* Main error message shown to the user *@
 <h1 class="text-danger">Error.</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
-
+@* Shows the Request ID if available — helpful for debugging *@
 @if (Model.ShowRequestId)
 {
     <p>
         <strong>Request ID:</strong> <code>@Model.RequestId</code>
     </p>
 }
-
+@* Section explaining development mode and environment settings *@
 <h3>Development Mode</h3>
 <p>
     Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.

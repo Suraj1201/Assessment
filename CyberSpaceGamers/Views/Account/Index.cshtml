@@ -1,17 +1,18 @@
 ﻿@{
+    // setting the title of the page//
     ViewData["Title"] = "My Account";
 }
 
-<section class="container py-4">
+<section class="container py-4">          <!-- this is the main section for the my account page -->
     <h1 class="mb-4">My Account</h1>
 
-    <div class="row g-3">
+    <div class="row g-3">     <!-- this makes a row layout using bootstrap -->
         <!-- Profile tile -->
         <div class="col-12 col-md-6">
-            <a class="text-decoration-none" asp-controller="Account" asp-action="Profile">
+            <a class="text-decoration-none" asp-controller="Account" asp-action="Profile">   <!-- when we click this it goes to the profile page -->
                 <div class="card shadow-sm h-100">
-                    <div class="card-body d-flex align-items-start gap-3">
-                        <i class="bi bi-person-circle fs-1"></i>
+                    <div class="card-body d-flex align-items-start gap-3">   <!-- card-body is the inside area of the card -->
+                        <i class="bi bi-person-circle fs-1"></i>     <!--  this is profile icon-->
                         <div>
                             <h5 class="card-title mb-1">Profile</h5>
                             <p class="mb-0 text-muted">View and edit your profile</p>
@@ -23,26 +24,29 @@
 
         <!-- Orders tile -->
         <div class="col-12 col-md-6">
-            <a class="text-decoration-none" asp-controller="Basket" asp-action="Orders">
-                <div class="card shadow-sm h-100">
+            <a class="text-decoration-none" asp-controller="Basket" asp-action="Orders">  <!-- when we click this it takes us to the orders page -->
+                <div class="card shadow-sm h-100">    <!-- bootstrap card makes it look like a box -->
                     <div class="card-body d-flex align-items-start gap-3">
-                        <i class="bi bi-receipt fs-1"></i>
+                        <i class="bi bi-receipt fs-1"></i>     <!-- card title -->
                         <div>
                             <h5 class="card-title mb-1">Orders</h5>
-                            <p class="mb-0 text-muted">See your order history</p>
+                            <p class="mb-0 text-muted">See your order history</p>  <!-- small description under the title -->
+                        </div>
                         </div>
                     </div>
                 </div>
             </a>
         </div>
+    <!-- logout form -->
         <form asp-controller="Account" asp-action="Logout" method="post" class="mx-2">
-            <button type="submit" class="btn btn-danger">Logout</button>
+        <button type="submit" class="btn btn-danger">Logout</button>      <!-- this button logs the user out -->
         </form>
-
+    <!-- delete account form -->
         <form class="mx-2" asp-action="DeleteAccount" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+        <!-- when clicked, this deletes the account after asking for confirmation -->
             <button type="submit" class="btn btn-danger">
                 Delete My Account
             </button>
         </form>
-    </div>
-</section>
+    </div>  <!-- end of row -->
+</section>  <!-- end of main section -->S
