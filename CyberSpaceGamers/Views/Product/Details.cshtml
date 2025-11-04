@@ -42,10 +42,17 @@
                 Longer description for the product. This is layout content only (no data binding).
             </p>
 
-            <div class="d-flex gap-2 mt-3">
-                <a class="btn btn-primary" asp-controller="Basket" asp-action="Index">Add to Basket</a>
-            </div>
-
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form asp-controller="Basket" asp-action="AddToBasket" method="post" class="m-0">
+                    <input type="hidden" name="productId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary btn-sm">Add to Basket</button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-sm" type="button">Login to Add</a>
+            }
             <hr class="my-4" />
 
             <div>

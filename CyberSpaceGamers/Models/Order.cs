@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.ComponentModel.Design;
+using Microsoft.EntityFrameworkCore;
 
 namespace CyberSpaceGamers.Models
 {
@@ -21,6 +22,7 @@ namespace CyberSpaceGamers.Models
 
         public DateTime OrderDate { get; set; }
 
+        [Precision(18,2)]
         public decimal Total {  get; set; }
 
 
@@ -37,6 +39,7 @@ namespace CyberSpaceGamers.Models
         public Product Product { get; set; }
 
         [Required]
+        [Precision(18, 2)]
         public decimal Price { get; set; }
 
         [Required]

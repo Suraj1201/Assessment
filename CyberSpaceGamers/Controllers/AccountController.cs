@@ -105,17 +105,9 @@ namespace CyberSpaceGamers.Controllers
         public IActionResult Index()
         {
             return View(); // will render Views/Account/Index.cshtml
+        }
         
 
-        // GET: /Account/Profile
-        [HttpGet]
-        public async Task<IActionResult> Profile()
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-                return RedirectToAction("Login");
-            var model = new ProfileViewModel
-            {
         // GET: /Account/Profile
         [HttpGet]
         public async Task<IActionResult> Profile()
@@ -141,6 +133,24 @@ namespace CyberSpaceGamers.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            bool userChanged = false;
+            if (user.UserName != model.Username)
+            {
+                user.UserName = model.Username;
+                userChanged = true;
+            }
+            
+
+            if (userChanged)
+            {
+                var updateResult = await _userManager.UpdateAsync(user);
+                if (!updateResult.Succeeded)
+                {
+                    foreach (var error in updateResult.Errors)
+                        ModelState.AddModelError("", error.Description);
+                    return View(model);
+                }
+            }
             if (!string.IsNullOrEmpty(model.CurrentPassword) &&
                 !string.IsNullOrEmpty(model.NewPassword))
             {
@@ -162,6 +172,8 @@ namespace CyberSpaceGamers.Controllers
 
             return View(model);
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAccount()
@@ -209,7 +221,6 @@ namespace CyberSpaceGamers.Controllers
             // user.Id gives the user id
             return View(user);
         }
-
     }
 
     

@@ -20,7 +20,7 @@ namespace CyberSpaceGamers.Controllers
             _db = db;
             _userManager = userManager;
         }
-
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -37,7 +37,7 @@ namespace CyberSpaceGamers.Controllers
         }
 
         [HttpPost]
-
+        [Authorize]
         public async Task<IActionResult> AddToBasket(int productId)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -61,6 +61,7 @@ namespace CyberSpaceGamers.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public async Task<IActionResult> Remove(int id)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -80,14 +81,7 @@ namespace CyberSpaceGamers.Controllers
 
         }
 
-        
-        public IActionResult Orders()
-        {
-            
-            return View();
-        }
-
-
+        [Authorize]
         public async Task<IActionResult> Checkout()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -131,7 +125,23 @@ namespace CyberSpaceGamers.Controllers
 
             return RedirectToAction("Orders", "Basket");
         }
+        [Authorize]
+        public async Task <IActionResult> Orders ()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
 
-        
+            var orders = await _db.Orders
+                .Where(o => o.UserId == user.Id)
+                .Include(o => o.Items)
+                .ThenInclude(oi => oi.Product)
+                .OrderByDescending(o => o.OrderDate)
+                .ToListAsync();
+
+
+            return View(orders);
+        }
+
     }
 }
