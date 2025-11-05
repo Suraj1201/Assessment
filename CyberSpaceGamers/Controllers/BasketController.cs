@@ -88,17 +88,26 @@ namespace CyberSpaceGamers.Controllers
             if (user == null)
                 return RedirectToAction("Login", "Account");
 
-
             var BasketItems = await _db.BasketItems
                 .Where(b => b.UserId == user.Id)
                 .Include(b => b.Product)
                 .ToListAsync();
 
+            if (!BasketItems.Any())
+            {
+                TempData["Message"] = "Your basket is empty!";
+                return RedirectToAction("Index");
+            }
+
+            string orderNumber = "ORD" + DateTime.Now.ToString("yyyyMMddHHmmss")
+                         + "-" + new Random().Next(1000, 9999);
+
             var order = new Order
             {
                 UserId = user.Id,
                 OrderDate = DateTime.Now,
-                Total = BasketItems.Sum(b => b.Product.Price)
+                Total = BasketItems.Sum(b => b.Product.Price),
+                OrderNumber = orderNumber
 
             };
             _db.Orders.Add(order);
@@ -121,10 +130,11 @@ namespace CyberSpaceGamers.Controllers
 
             await _db.SaveChangesAsync();
 
-            TempData["Message"] = "Checkout Successful";
+            TempData["CheckoutMessage"] = "Checkout Successful";
 
-            return RedirectToAction("Orders", "Basket");
+            return RedirectToAction("Index");
         }
+
         [Authorize]
         public async Task <IActionResult> Orders ()
         {
@@ -133,7 +143,7 @@ namespace CyberSpaceGamers.Controllers
                 return RedirectToAction("Login", "Account");
 
             var orders = await _db.Orders
-                .Where(o => o.UserId == user.Id)
+                .Where(o => o.UserId == user.Id && o.OrderDate >= DateTime.Now.AddDays(-30))
                 .Include(o => o.Items)
                 .ThenInclude(oi => oi.Product)
                 .OrderByDescending(o => o.OrderDate)
@@ -141,6 +151,29 @@ namespace CyberSpaceGamers.Controllers
 
 
             return View(orders);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+                return RedirectToAction("Login", "Account");
+
+            var order = await _db.Orders
+                .Include(o => o.Items) // Include OrderItems
+                .FirstOrDefaultAsync(o => o.Id == id && o.UserId == user.Id);
+
+            if (order == null)
+                return NotFound();
+
+            _db.OrderItems.RemoveRange(order.Items); // Delete related items
+            _db.Orders.Remove(order);                // Delete order itself
+            await _db.SaveChangesAsync();
+
+            
+            return RedirectToAction("Orders");
         }
 
     }

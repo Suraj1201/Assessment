@@ -2,6 +2,23 @@
     ViewData["Title"] = "Home";
     Layout = "_Layout";
 }
+@if (TempData["DeletedMessage"] != null)
+{
+    <div id ="alertMessage" class="alert alert-success" role="alert">
+        @TempData["DeletedMessage"]
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const alert = document.getElementById("alertMessage");
+            if (alert) {
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";
+                setTimeout(() => alert.remove(), 500);
+            }
+        }, 3000);
+    </script>
+}
 <div class="container py-4">
     <div class="hero rounded-3xl">
         <div class="d-flex flex-column align-items-center text-center gap-3">

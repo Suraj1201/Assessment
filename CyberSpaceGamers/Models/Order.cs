@@ -25,6 +25,7 @@ namespace CyberSpaceGamers.Models
         [Precision(18,2)]
         public decimal Total {  get; set; }
 
+        public string OrderNumber { get; set; } = string.Empty;
 
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
     }

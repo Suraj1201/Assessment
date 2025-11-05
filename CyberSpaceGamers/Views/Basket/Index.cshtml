@@ -10,11 +10,19 @@
         <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">← Back to Products</a>
     </div>
 
-    @if (Model == null || !Model.Any())
+    
+    @if (TempData["CheckoutMessage"] != null)
+    {
+        <div class="alert alert-success mt-2">
+            @TempData["CheckoutMessage"]
+            <a id="viewOrdersBtn" asp-controller="Basket" asp-action="Orders">View Your Order</a>
+        </div>
+        
+    }
+    else if (!Model.Any())
     {
         <div class="alert alert-info">Your basket is empty.</div>
     }
-
     else
     {
         <div class="container py-4">
@@ -30,7 +38,7 @@
                     </div>
                     <!-- X on the right -->
                         <form asp-action="Remove" asp-route-id="@item.Id" method="post">
-                            <button class="btn btn-outline-danger btn-sm w-100">x</button>
+                            <button class="btn btn-outline-danger btn-sm w-100"><i class="bi bi-trash"></i></button>
                         </form>
                     
                 </div>
@@ -49,3 +57,16 @@
         </div>
     }
 </div>
+
+<script>
+    // Wait 1 second before showing the button
+    setTimeout(() => {
+        const btn = document.getElementById('viewOrdersBtn');
+        btn.style.display = 'inline-block';
+
+        // Hide the button after 5 seconds
+        setTimeout(() => {
+            btn.style.display = 'none';
+        }, 5000);
+    }, 1000);
+</script>

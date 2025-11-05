@@ -135,5 +135,11 @@
 @{
     ViewData["Title"] = "Products";
 }
-
+<script>
+    document.querySelector('input[name="search"]').addEventListener('input', function() {
+        if (!this.value.trim()) {
+            window.location.href = '/Product/Index';
+        }
+    });
+</script>
 

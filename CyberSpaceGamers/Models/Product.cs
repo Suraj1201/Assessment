@@ -33,6 +33,7 @@ namespace CyberSpaceGamers.Models
         // Age rating for the product, e.g., 3, 7, 12, etc.
 
         [Required]
+        [RegularExpression(@"^[a-zA-z]+$", ErrorMessage = "Genre can only contain letters")] 
         public string Genre { get; set; } = string.Empty;
         // Genre of the product. Required so it must have a value.
     }

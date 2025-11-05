@@ -190,7 +190,7 @@ namespace CyberSpaceGamers.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignOutAsync();
-                TempData["Message"] = "Your account has been deleted successfully.";
+                TempData["DeletedMessage"] = "Your account has been deleted successfully.";
                 return RedirectToAction("Index", "Home");
             }
 
@@ -201,25 +201,6 @@ namespace CyberSpaceGamers.Controllers
 
             return RedirectToAction("Profile", "Account");
 
-        }
-    }
-    public class SomeController : Controller
-    {
-        private readonly UserManager<ApplicationUser> _userManager;
-
-        public SomeController(UserManager<ApplicationUser> userManager)
-        {
-            _userManager = userManager;
-        }
-
-        public async Task<IActionResult> Profile()
-        {
-            // Get the currently logged-in user
-            var user = await _userManager.GetUserAsync(User);
-
-            // user.Username gives the username
-            // user.Id gives the user id
-            return View(user);
         }
     }
 
