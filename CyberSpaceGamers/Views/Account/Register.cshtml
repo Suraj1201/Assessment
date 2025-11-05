@@ -1,40 +1,42 @@
-﻿@model CyberSpaceGamers.Models.ViewModels.RegisterViewModel;
-@{
-    ViewData["Title"] = "Register";
-    Layout = "_Layout";
-}
+﻿@model CyberSpaceGamers.Models.ViewModels.RegisterViewModel;      // connects this page to the RegisterViewModel so we can use its properties//
 
+@{
+    ViewData["Title"] = "Register";     // sets the page title
+    Layout = "_Layout";                 // uses the main layout page
+}
+<!-- main container for register form -->
 <div class="container py-4" style="max-width: 540px;">
     <h1 class="h3 mb-3">Create Account</h1>
 
-    <form asp-action="Register" method="post">
+    <form asp-action="Register" method="post">  <!-- form to register new account -->
         <div asp-validation-summary="All" class="text-danger"></div>
+        <!-- user input -->
         <div class="mb-3">
             <label class="form-label" asp-for="Username">Username</label>
             <input asp-for="Username" class="form-control" placeholder="Choose a username" />
             <span asp-validation-for="Username" class="text-danger"></span>
         </div>
-
+        <!-- password input -->
         <div class="mb-3">
             <label class="form-label" asp-for="Password">Password</label>
             <input asp-for="Password" type="password" class="form-control" placeholder="Create a password" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
-
+        <!--  confirm password input -->
         <div class="mb-3">
             <label class="form-label" asp-for="ConfirmPassword">Confirm Password</label>
             <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Re-enter password" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
 
-        <button class="btn btn-primary w-100"  title="Demo only">Create Account</button>
-        <p class="text-center mt-3 mb-0">
+        <button class="btn btn-primary w-100" title="Demo only">Create Account</button>                <!-- register button -->
+        <p class="text-center mt-3 mb-0">   <!-- link for users who already have an account -->
             Have an account already?
             <a asp-controller="Account" asp-action="Login">Login</a>
         </p>
     </form>
 </div>
-
+<!-- scripts for form validation -->
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

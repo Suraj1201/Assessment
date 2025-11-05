@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<CyberSpaceGamers.Models.Order>
 @{
+    // setting the page title//
     ViewData["Title"] = "Your Order History";
 }
+
+@*This part shows the user's order history page. 
+   If there are no orders, it shows a message. 
+   Otherwise, it will display the orders later. *@
+
 <section class="container py-4 page-orders">
     <h1 class="display-6 fw-bold text-uppercase mb-3">Your Order History</h1>
     <div class="d-flex justify-content-between align-items-center mb-3">

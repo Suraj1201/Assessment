@@ -1,36 +1,42 @@
-﻿@model CyberSpaceGamers.Models.ViewModels.ProfileViewModel
+﻿@model CyberSpaceGamers.Models.ViewModels.ProfileViewModel      // connects this page to the ProfileViewModel so we can use username and passwords//
+
 @{
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Profile";  // sets the title of the page
+
 }
+  
 
-<h2>Profile</h2>
 
+<h2>Profile</h2>      <!-- show username but make it read-only so user can't edit it -->
+<!-- form to change password -->
 <form asp-action="Profile" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
+    <!-- user  input-->
     <div class="mb-3">
         <label asp-for="Username"></label>
         <input asp-for="Username" class="form-control" />
-        <span asp-validation-for="Username" class="text-danger"></span>
+        <span asp-validation-for="Username" class="text-danger"></span> <!-- shows all validation errors at the top -->
     </div>
+    <!-- current password -->
     <div class="mb-3">
         <label asp-for="CurrentPassword"></label>
         <input asp-for="CurrentPassword" class="form-control" />
         <span asp-validation-for="CurrentPassword" class="text-danger"></span>
     </div>
-
+    <!-- new password -->
     <div class="mb-3">
         <label asp-for="NewPassword"></label>
         <input asp-for="NewPassword" class="form-control" />
         <span asp-validation-for="NewPassword" class="text-danger"></span>
     </div>
-
+    <!-- confirm password -->
     <div class="mb-3">
         <label asp-for="ConfirmPassword"></label>
         <input asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
-
-    <button type="submit" class="btn btn-primary">Change Password</button>
+    <!-- button to save new password -->
+    <button type="submit" class="btn btn-primary">Change Password</button>    <!-- back button to retrun to account page -->
     <button type="submit" formnovalidate formaction='@Url.Action("Index", "Account")' class="btn btn-primary">Back</button>
     
    
@@ -38,11 +44,11 @@
 
 
 
-@if (ViewBag.StatusMessage != null)
+@if (ViewBag.StatusMessage != null)    // show sucess message when password is changed -->
 {
     <div class="alert alert-success mt-3">@ViewBag.StatusMessage</div>
 }
-
+<!-- scripts for validation (checks form before submitting) -->
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

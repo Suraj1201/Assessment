@@ -1,10 +1,12 @@
 ﻿@model CyberSpaceGamers.Models.Product
 @{
+    // Sets the title of the page and uses the shared layout
     ViewData["Title"] = "Product";
     Layout = "_Layout";
 }
 
 <div class="container py-4">
+    @* Navigation breadcrumbs to help the user know where they are *@
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -31,6 +33,7 @@
                 <span class="badge text-bg-secondary">@Model.Genre</span>
                 <span class="badge text-bg-dark">@Model.AgeRating</span>
             </div>
+            @* Product price *@
 
             <div class="h4 mb-3">£@Model.Price</div>
 
@@ -39,6 +42,7 @@
                 @Model.ShortDescription
             </p>
             <p>
+                @* Placeholder for a longer description (can be updated later) *@
                 Longer description for the product. This is layout content only (no data binding).
             </p>
 
