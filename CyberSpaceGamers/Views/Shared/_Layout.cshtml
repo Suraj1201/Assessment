@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CyberSpaceGamers</title>   @*title*@
+    <title>@ViewData["Title"] - CyberSpaceGamers</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CyberSpaceGamers.styles.css" asp-append-version="true" />
@@ -24,7 +24,6 @@
 
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- Products -->
                         <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Product" ? "active" : "")"
                                asp-controller="Product" asp-action="Index">
@@ -32,7 +31,6 @@
                             </a>
                         </li>
 
-                        <!-- Privacy (keep if you want it in navbar) -->
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
@@ -103,7 +101,7 @@
                     </ul>
                 </div>
 
-                <!-- Column 3 (Newsletter) -->
+                <!-- Column 3 -->
                 <div class="col-12 col-md-4">
                     <h6 class="footer-title">NEWSLETTER</h6>
                     <form class="d-flex gap-2" role="search">

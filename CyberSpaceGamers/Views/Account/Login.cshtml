@@ -1,14 +1,14 @@
 ﻿@model CyberSpaceGamers.Models.ViewModels.LoginViewModel;    // connects this page to the LoginViewModel so we can use its data//
 
 @{
-    ViewData["Title"] = "Login";        // sets the page title that will appear in the browser tab//
-    Layout = "_Layout";         // uses the main layout file called _Layout.cshtml for page structure//
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
 }
 }
 
-<div class="container py-4" style="max-width: 540px;">   <!-- this is the main container for the login form -->
-    <h1 class="h3 mb-3">Login</h1>        <!-- page title -->
-    @if (TempData["SuccessMessage"] != null)    // shows success message if available -->
+<div class="container py-4" style="max-width: 540px;">
+    <h1 class="h3 mb-3">Login</h1>
+    @if (TempData["SuccessMessage"] != null)    // shows success message if available
     {
         <div class="alert alert-success" role="alert">
             @TempData["SuccessMessage"]
@@ -32,7 +32,7 @@
         </div>
         <!-- login button -->
         <button class="btn btn-primary w-100"  title="Login">Login</button>
-        <!-- link to register page -->
+        <!-- links to register page -->
         <p class="text-center mt-3 mb-0">
             Don’t have an account?
             <a asp-controller="Account" asp-action="Register">Create new account</a>

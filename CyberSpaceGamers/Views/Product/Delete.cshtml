@@ -1,7 +1,6 @@
 ﻿@model CyberSpaceGamers.Models.Product
  @* Connects this page to the Product model *@
 <div class="card shadow border-0 mt-4">
-    @* Header section with page title *@
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
@@ -9,41 +8,36 @@
             </div>
         </div>
     </div>
-    @* Body section that contains the form *@
+    @*  All inputs disabled*@
     <div class="card-body p-4">
         <form method="post" class="row">
             <div class="border p-3">
-                @* Disabled input to show the product name being deleted *@
                 <div class="form-floating py-2 col-12 text-dark">
                     <input asp-for="Name" disabled class="form-control border-0 shadow" />
                     <label asp-for="Name" class="ms-2"></label>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                @* Disabled input to show the product description *@
                 <div class="form-floating py-2 col-12 text-dark">
                     <input asp-for="ShortDescription"  disabled class="form-control border-0 shadow" />
                     <label asp-for="ShortDescription" class="ms-2"></label>
                     <span asp-validation-for="ShortDescription" class="text-danger"></span>
                 </div>
-                @* Disabled input to show the product price *@
                 <div class="form-floating py-2 col-12 text-dark">
                     <input asp-for="Price" disabled class="form-control border-0 shadow" />
                     <label asp-for="Price" class="ms-2"></label>
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
-                @* Disabled input to show the product age rating *@
                 <div class="form-floating py-2 col-12 text-dark">
                     <input asp-for="AgeRating" disabled class="form-control border-0 shadow" />
                     <label asp-for="AgeRating" class="ms-2"></label>
                     <span asp-validation-for="AgeRating" class="text-danger"></span>
                 </div>
-                @* Disabled input to show the product genre *@
                 <div class="form-floating py-2 col-12 text-dark">
                     <input asp-for="Genre" disabled class="form-control border-0 shadow" />
                     <label asp-for="Genre" class="ms-2"></label>
                     <span asp-validation-for="Genre" class="text-danger"></span>
                 </div>
-                @* Buttons for confirming delete or going back to list *@
+                @* Delete / Back buttons *@
                 <div class="row pt-2">
                     <div class="col-6 col-md-3">
                         <button type="submit" class="btn btn-primary form-control">Delete</button>

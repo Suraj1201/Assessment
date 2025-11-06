@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<CyberSpaceGamers.Models.Order>
 @{
-    // setting the page title//
     ViewData["Title"] = "Your Order History";
 }
 
@@ -29,7 +28,6 @@
 
             <thead>
                 
-                <!-- new meta row -->
                 <tr class="table-secondary">
                     <th colspan="2" class="text-start">Date: @order.OrderDate.ToString("dd MMM yyyy")</th>
                             <th class="text-end">
@@ -45,7 +43,6 @@
                                 </form>
                             </th>
                 </tr>
-                <!-- existing header row -->
                 <tr>
                     <th scope="col">Product Name</th>
                     <th class="text-center">Qty</th>

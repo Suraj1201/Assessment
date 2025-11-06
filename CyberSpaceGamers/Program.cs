@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -38,11 +38,9 @@ builder.Services.ConfigureApplicationCookie(opts =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -58,6 +56,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Seeding role for Admin
 async Task SeedRolesAndAdminAsync(IHost app)
 {
     using var scope = app.Services.CreateScope();
@@ -66,7 +65,7 @@ async Task SeedRolesAndAdminAsync(IHost app)
 
     const string adminRole = "Admin";
     const string userRole = "User";
-    const string adminPassword = "Admin123$$$"; // Change this to a secure password
+    const string adminPassword = "Admin123$$$";
 
     // Create roles if they don't exist
     if (!await roleManager.RoleExistsAsync(adminRole))
@@ -91,7 +90,6 @@ async Task SeedRolesAndAdminAsync(IHost app)
     }
 }
 
-// Call the seed method
 await SeedRolesAndAdminAsync(app);
 
 app.Run();

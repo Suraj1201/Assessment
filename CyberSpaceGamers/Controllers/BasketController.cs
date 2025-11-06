@@ -124,7 +124,7 @@ namespace CyberSpaceGamers.Controllers
                 _db.OrderItems.Add(OrderItem);
             }
 
-            /*Remove from the basket when checked out*/
+            //Removes from the basket when checked out
 
             _db.BasketItems.RemoveRange(BasketItems);
 

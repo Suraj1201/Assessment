@@ -1,13 +1,13 @@
 ﻿@model CyberSpaceGamers.Models.ViewModels.ProfileViewModel      // connects this page to the ProfileViewModel so we can use username and passwords//
 
 @{
-    ViewData["Title"] = "Profile";  // sets the title of the page
+    ViewData["Title"] = "Profile";
 
 }
   
 
 
-<h2>Profile</h2>      <!-- show username but make it read-only so user can't edit it -->
+<h2>Profile</h2>
 <!-- form to change password -->
 <form asp-action="Profile" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -36,7 +36,8 @@
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
     <!-- button to save new password -->
-    <button type="submit" class="btn btn-primary">Change Password</button>    <!-- back button to retrun to account page -->
+    <button type="submit" class="btn btn-primary">Change Password</button>
+    <!-- back button to retrun to account page -->
     <button type="submit" formnovalidate formaction='@Url.Action("Index", "Account")' class="btn btn-primary">Back</button>
     
    
@@ -44,11 +45,11 @@
 
 
 
-@if (ViewBag.StatusMessage != null)    // show sucess message when password is changed -->
+@if (ViewBag.StatusMessage != null)    // show sucess message when password is changed
 {
     <div class="alert alert-success mt-3">@ViewBag.StatusMessage</div>
 }
-<!-- scripts for validation (checks form before submitting) -->
+<!-- scripts for validation -->
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

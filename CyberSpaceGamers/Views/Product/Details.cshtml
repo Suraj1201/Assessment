@@ -1,6 +1,5 @@
 ﻿@model CyberSpaceGamers.Models.Product
 @{
-    // Sets the title of the page and uses the shared layout
     ViewData["Title"] = "Product";
     Layout = "_Layout";
 }
@@ -25,7 +24,6 @@
             </div>
         </div>
 
-        <!-- Details area -->
         <div class="col-md-7">
             <h1 class="h3 mb-2">@Model.Name</h1>
 
@@ -33,7 +31,6 @@
                 <span class="badge text-bg-secondary">@Model.Genre</span>
                 <span class="badge text-bg-dark">@Model.AgeRating</span>
             </div>
-            @* Product price *@
 
             <div class="h4 mb-3">£@Model.Price</div>
 
@@ -42,7 +39,6 @@
                 @Model.ShortDescription
             </p>
             <p>
-                @* Placeholder for a longer description (can be updated later) *@
                 Longer description for the product. This is layout content only (no data binding).
             </p>
 

@@ -1,24 +1,21 @@
 ﻿@model List<Product>
 @{
-    ViewData["Title"] = "ProductControl";     // Sets the title of the page and applies the main layout
+    ViewData["Title"] = "ProductControl";
     Layout = "_Layout";
 }
 
 
 <div class="container">
-    @* Page heading *@
        <div class="col-6">
            <h2 class="text-primary">PRODUCT LIST</h2>
        </div>
-    @* Button to create a new product *@
        <div class="col-6">
            <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
                 Create New Product
            </a>
        </div>
-    @* Table that displays all products from the database *@
+    @* Products in the database *@
     <table class="table table-bordered text-white product-table">
-        @* Table header with column names *@
         <thead class="product-table-header">
             <tr>
                 <th>Product Name</th>
@@ -28,9 +25,10 @@
                 <th>Genre</th>
             </tr>
         </thead>
-        <tbody>    @* Table body where each product will be listed *@
+        <tbody>
 
-            @foreach (var obj in Model)       @* Loop through each product in the model and display its info *@
+            @* Loop through each product in the model and display its info *@
+            @foreach (var obj in Model)
             {
                 <tr>
                     <td>
@@ -49,7 +47,7 @@
                         @obj.Genre
                     </td>
                     <td>
-                        @* Buttons for editing or deleting the selected product *@
+                        @* Edit / Delete button *@
                         <div class="w-75 btn-group" role="group">
                             <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                                 Edit

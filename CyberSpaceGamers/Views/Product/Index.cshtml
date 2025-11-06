@@ -33,7 +33,6 @@
        
 
 
-        <!-- Main Content -->
         <main class="col-12 col-md-9">
             <div class="d-flex flex-column flex-md-row gap-2 align-items-stretch align-items-md-center mb-3">
                 <form asp-action="Index" method="get" class="flex-grow-1 d-flex gap-2">
@@ -67,7 +66,7 @@
                 <!--Check if product list exist-->
                 @if (Model.Products != null && Model.Products.Any())
                 {
-                    <!--Loop Through each product in the collection-->
+                    <!--Loop Through each product in the database-->
                     @foreach (var p in Model.Products)
                     {
                         <div class="col-12 col-sm-6 col-lg-4">
@@ -77,13 +76,12 @@
                 }
                 else
                 {
-                    <!--Display a default message when searched product are not found-->
+                    <!--Display message when searched product not found-->
                     <div class="col-12 text-center py-5">
                         <p class="text-muted">No Games Found</p>
                     </div>
                 }
             </div>
-            <!-- Pagination navigation section -->
         <!-- Pagination -->
         <nav aria-label="Products pagination" class="mt-3">
             <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
@@ -105,7 +103,7 @@
                     <button class="btn btn-primary" disabled aria-disabled="true">← Previous</button>
                 }
 
-                @* Center text *@
+                @* Current page *@
                 <span class="small text-muted">Page @Model.Page of @Model.TotalPages</span>
 
                 @* Next *@
@@ -132,9 +130,7 @@
         </main>
     </div>
 </section>
-@{
-    ViewData["Title"] = "Products";
-}
+@*Back button without validation*@
 <script>
     document.querySelector('input[name="search"]').addEventListener('input', function() {
         if (!this.value.trim()) {

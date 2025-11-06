@@ -15,10 +15,8 @@
         </form>
         <style>.product-link:hover {text-decoration: underline !important;}</style>
         <div class="small text-muted mb-2">@Model.ShortDescription</div>
-        <!-- move the 'auto push to bottom' onto the PRICE -->
         <div class="price mt-auto fw-semibold">£@Model.Price.ToString("0.00")</div>
 
-        <!-- button row: no mt-auto; just a small gap above it -->
         <div class="d-grid mt-2">
             @if (User.Identity.IsAuthenticated)
             {

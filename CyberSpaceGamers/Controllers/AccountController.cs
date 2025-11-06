@@ -39,10 +39,10 @@ namespace CyberSpaceGamers.Controllers
 
             if (result.Succeeded)
             {
-                // Assign the "User" role to new users
+                // Assigns the "User" role to new users
                 await _userManager.AddToRoleAsync(user, "User");
 
-                // Show success message and redirect to login
+                // Shows success message and redirects to login
                 TempData["SuccessMessage"] = "Account created successfully! Please log in.";
 
                 return RedirectToAction("Login", "Account");
@@ -55,7 +55,6 @@ namespace CyberSpaceGamers.Controllers
         }
 
         [HttpGet]
-        // GET: /Account/Login
         public IActionResult Login()
         {
             return View();
@@ -99,7 +98,7 @@ namespace CyberSpaceGamers.Controllers
 
 
 
-        // GET: /Account/Register
+        
 
         // /Account
         public IActionResult Index()
@@ -108,7 +107,7 @@ namespace CyberSpaceGamers.Controllers
         }
         
 
-        // GET: /Account/Profile
+        
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
@@ -119,7 +118,6 @@ namespace CyberSpaceGamers.Controllers
             {
                 Username = user.UserName
             };
-            // simple view-only page for now
             return View(model);
         }
         [HttpPost]
