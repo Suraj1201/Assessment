@@ -37,8 +37,6 @@ namespace CyberSpaceGamers.Controllers
             {
                 var s = search.Trim().ToLower();
                 query = query.Where(p => p.Name.ToLower().Contains(s));
-                   /* p.Name.Contains(s, StringComparison.OrdinalIgnoreCase) ||
-                    (p.ShortDescription != null && p.ShortDescription.Contains(s, StringComparison.OrdinalIgnoreCase)));*/
             }
 
             

@@ -48,7 +48,6 @@
 
                     <div class="d-flex gap-2">                       
                         <a class="btn btn-outline-light" asp-controller="Basket" asp-action="Index">🧺 Basket</a>
-                        <!--<a class="btn btn-warning" asp-controller="Account" asp-action="Login">Login/SignUp</a>-->
                         @{
                             var isLoggedIn = User?.Identity?.IsAuthenticated == true;
                             var isAdmin = User?.IsInRole("Admin") == true;
